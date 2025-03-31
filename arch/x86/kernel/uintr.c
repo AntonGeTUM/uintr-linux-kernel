@@ -517,6 +517,8 @@ static bool uintr_is_receiver_active(struct uintr_upid_ctx *upid_ctx)
 
 static int do_uintr_register_sender(u64 uvec, struct uintr_upid_ctx *upid_ctx)
 {
+	printk(KERN_INFO "Registering sender in the kernel\n");
+
 	struct uintr_uitt_entry *uitte = NULL;
 	struct uintr_uitt_ctx *uitt_ctx;
 	struct task_struct *t = current;
