@@ -933,6 +933,8 @@ static inline u32 cpu_to_ndst(int cpu)
 
 static int do_uintr_register_handler(u64 handler, unsigned int flags)
 {
+	printk(KERN_INFO "Registering handler in the kernel\n");
+	
 	struct uintr_upid_ctx *upid_ctx;
 	struct uintr_upid *upid;
 	struct task_struct *t = current;
