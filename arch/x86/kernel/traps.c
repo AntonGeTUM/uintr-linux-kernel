@@ -105,7 +105,7 @@ do_trap_no_signal(struct task_struct *tsk, int trapnr, const char *str,
 		  struct pt_regs *regs,	long error_code)
 {
 	printk(KERN_INFO "Entering do_trap_no_signal\n");
-	printk(KERN_INFO "Parameters: Trap-Nr. %d, Error-Code: %ld\n", trapnr, error_code);
+	//printk(KERN_INFO "Parameters: Trap-Nr. %d, Error-Code: %ld\n", trapnr, error_code);
 
 	if (v8086_mode(regs)) {
 		/*
@@ -163,7 +163,7 @@ do_trap(int trapnr, int signr, char *str, struct pt_regs *regs,
 	long error_code, int sicode, void __user *addr)
 {
 	printk(KERN_INFO "Entering do_trap\n");
-	printk(KERN_INFO "Parameters: Trap-Nr. %d, Signal-Nr. %d, Error-Code %ld and Si-Code %d\n", trapnr, signr, error_code0, sicode);
+	//printk(KERN_INFO "Parameters: Trap-Nr. %d, Signal-Nr. %d, Error-Code %ld and Si-Code %d\n", trapnr, signr, error_code0, sicode);
 	
 	struct task_struct *tsk = current;
 
@@ -183,7 +183,7 @@ static void do_error_trap(struct pt_regs *regs, long error_code, char *str,
 	unsigned long trapnr, int signr, int sicode, void __user *addr)
 {
 	printk(KERN_INFO "Entering do_error_trap\n");
-	printk(KERN_INFO "Parameters: Trap-Nr. %d, Signal-Nr. %d, Error-Code %ld\n", trapnr, signr, error_code);
+	//printk(KERN_INFO "Parameters: Trap-Nr. %d, Signal-Nr. %d, Error-Code %ld\n", trapnr, signr, error_code);
 
 	RCU_LOCKDEP_WARN(!rcu_is_watching(), "entry code didn't wake RCU");
 
