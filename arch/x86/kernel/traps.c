@@ -212,6 +212,7 @@ static __always_inline void __user *error_get_trap_addr(struct pt_regs *regs)
 
 DEFINE_IDTENTRY(exc_divide_error)
 {
+	printk(KERN_INFO "Entry point for division error\n");
 	do_error_trap(regs, 0, "divide error", X86_TRAP_DE, SIGFPE,
 		      FPE_INTDIV, error_get_trap_addr(regs));
 }
