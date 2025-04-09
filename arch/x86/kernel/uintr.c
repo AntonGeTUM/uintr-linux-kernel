@@ -978,7 +978,8 @@ static int do_uintr_register_handler(u64 handler, unsigned int flags)
 
 	/* Check if a locked access is needed for NV and NDST bits of the UPID */
 	upid = upid_ctx->upid;
-	upid->nc.nv = UINTR_NOTIFICATION_VECTOR;
+	//upid->nc.nv = UINTR_NOTIFICATION_VECTOR;
+	upid->nc.nv = 0x3B;
 	upid->nc.ndst = cpu_to_ndst(cpu);
 
 	xsave_wrmsrl(xstate, MSR_IA32_UINTR_HANDLER, handler);
@@ -990,7 +991,8 @@ static int do_uintr_register_handler(u64 handler, unsigned int flags)
 
 	/* Modify only the relevant bits of the MISC MSR */
 	xsave_rdmsrl(xstate, MSR_IA32_UINTR_MISC, &misc_msr);
-	misc_msr |= (u64)UINTR_NOTIFICATION_VECTOR << 32;
+	//misc_msr |= (u64)UINTR_NOTIFICATION_VECTOR << 32;
+	misc_msr |= (u64)0x3B << 32;
 	xsave_wrmsrl(xstate, MSR_IA32_UINTR_MISC, misc_msr);
 
 	t->thread.upid_activated = true;
